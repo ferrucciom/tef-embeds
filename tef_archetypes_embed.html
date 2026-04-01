@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEF Content Archetypes</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; padding: 24px; font-size: 13px; }
+  h2 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: #1a1a1a; }
+  .subtitle { font-size: 12px; color: #888; margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  thead th { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #888; padding: 0 10px 10px; text-align: left; border-bottom: 1px solid #e8e8e8; }
+  tbody tr { border-bottom: 1px solid #f0f0f0; }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 12px 10px; vertical-align: top; line-height: 1.5; }
+  .name { font-weight: 600; color: #1a1a1a; font-size: 13px; }
+  .spin { color: #444; font-size: 12px; }
+  .ex { font-size: 11px; color: #888; margin-top: 5px; font-style: italic; }
+  .note { font-size: 11px; color: #999; margin-top: 6px; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 5px; }
+  .tg-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #bbb; margin-bottom: 3px; margin-top: 5px; }
+  .tg-label:first-child { margin-top: 0; }
+  .pill { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 20px; margin: 1px 2px 1px 0; white-space: nowrap; }
+  .pill-p { background: #EBF4FF; color: #1a6bbf; }
+  .pill-s { background: #f4f4f0; color: #666; }
+  .pill-m { background: #fafafa; color: #aaa; border: 1px solid #e8e8e8; }
+  .freq-n { font-size: 20px; font-weight: 700; color: #1a1a1a; }
+  .freq-abs { font-size: 11px; color: #888; margin-left: 5px; }
+  .freq-bar-wrap { margin-top: 5px; height: 3px; background: #f0f0f0; border-radius: 2px; }
+  .freq-bar { height: 100%; border-radius: 2px; background: #378ADD; }
+  .freq-cadence { font-size: 10px; color: #aaa; margin-top: 4px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 12px 0 0; border-top: 1px solid #f0f0f0; margin-top: 8px; }
+  .li { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #888; }
+  .ld { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<h2>TEF — Content archetypes</h2>
+<p class="subtitle">Editorial question: <em>What does it take to turn European science into world-class ventures?</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:13%">Archetype</th>
+      <th style="width:21%">TEF spin</th>
+      <th style="width:26%">Targets</th>
+      <th style="width:25%">Example titles</th>
+      <th style="width:15%">Frequency</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<div class="legend">
+  <div class="li"><div class="ld" style="background:#EBF4FF;border:1px solid #9dc5f0"></div>Primary</div>
+  <div class="li"><div class="ld" style="background:#f4f4f0;border:1px solid #ccc"></div>Secondary</div>
+  <div class="li"><div class="ld" style="background:#fafafa;border:1px solid #e8e8e8"></div>Marginal</div>
+</div>
+
+<script>
+const rows = [
+  {
+    name: 'Entrepreneurial education',
+    spin: 'The practical knowledge researchers need to build a company from their science — from validating an idea to navigating the first funding round',
+    targets: { primary: ['Students','Researchers'], secondary: ['Alumni founders'], marginal: [] },
+    examples: [
+      '"What to do with your research idea if you\'re not ready to drop your postdoc"',
+      '"How to turn a patent into a product: the decisions that happen before you hire your first engineer"'
+    ],
+    note: null, n: 7, cadence: '≈ every 7 weeks'
+  },
+  {
+    name: 'Technology take',
+    spin: 'What a frontier technology means for scientists and founders trying to commercialise it in Europe — where the path from lab to venture actually breaks',
+    targets: { primary: ['Founders','Researchers'], secondary: ['Mentors','Investors'], marginal: ['Corporates'] },
+    examples: [
+      '"Quantum computing has a European talent problem. Here\'s what it looks like from the lab."',
+      '"Why solid-state batteries keep failing to scale — and what the next generation of founders is doing differently"'
+    ],
+    note: null, n: 7, cadence: '≈ every 7 weeks'
+  },
+  {
+    name: 'Founder / researcher profile',
+    spin: 'The specific decisions and inflection points that determined whether a researcher\'s venture succeeded — long-form, analytical, extracting lessons others can use',
+    targets: { primary: ['Students','Researchers'], secondary: ['Mentors','Investors'], marginal: [] },
+    examples: [
+      '"She published 14 papers before filing her first patent. What changed."',
+      '"How a materials scientist from Politecnico built a €4M seed round without a co-founder"'
+    ],
+    note: 'Distinct from TEF Stories (social, short-form, celebratory). This format is long-form, platform-agnostic, analytically framed.',
+    n: 5, cadence: '≈ every 10 weeks'
+  },
+  {
+    name: 'VC / capital market analysis',
+    spin: 'What the capital structure of European deep tech actually means for a founder raising their first round — and why the US comparison misleads',
+    targets: { primary: ['Investors','Corporates'], secondary: ['Founders'], marginal: ['Public institutions'] },
+    examples: [
+      '"Italian deep tech raised €340M in 2024. Almost none went to pre-seed. Here\'s the real problem."',
+      '"The European Series A gap is real. Here\'s the data, and what founders should do about it"'
+    ],
+    note: null, n: 4, cadence: '≈ quarterly'
+  },
+  {
+    name: 'Policy brief',
+    spin: 'Whether a given policy actually makes it easier or harder to build a deep tech venture in Europe — and what would need to change',
+    targets: { primary: ['Public institutions','Government'], secondary: ['Corporates','Investors'], marginal: ['Founders'] },
+    examples: [
+      '"The EIC Accelerator is funding the wrong stage. A proposal for what to fix."',
+      '"Italy\'s national research plan has no commercialisation layer. Here\'s what one would look like"'
+    ],
+    note: null, n: 3, cadence: 'Every 4 months'
+  },
+  {
+    name: 'Program / ecosystem analysis',
+    spin: 'An honest, data-grounded assessment of what the European deep tech infrastructure is good at, where it fails founders, and what the missing pieces are',
+    targets: { primary: ['Public institutions','Corporates'], secondary: ['Investors'], marginal: ['Founders'] },
+    examples: [
+      '"Why Europe\'s university tech transfer offices keep losing their best spinouts to the US."',
+      '"A map of European deep tech support: what exists, what\'s missing, and where Italy sits"'
+    ],
+    note: 'One flagship piece per year. Co-authored or co-branded with a research or institutional partner.',
+    n: 1, cadence: 'Annual flagship'
+  }
+];
+
+const tbody = document.getElementById('tbody');
+tbody.innerHTML = rows.map(r => {
+  const tHTML = ['primary','secondary','marginal'].map(tier => {
+    if (!r.targets[tier] || !r.targets[tier].length) return '';
+    const cls = tier==='primary'?'pill-p':tier==='secondary'?'pill-s':'pill-m';
+    return `<div><div class="tg-label">${tier.charAt(0).toUpperCase()+tier.slice(1)}</div>${r.targets[tier].map(t=>`<span class="pill ${cls}">${t}</span>`).join('')}</div>`;
+  }).join('');
+  const barW = Math.round((r.n/7)*100);
+  return `<tr>
+    <td class="name">${r.name}</td>
+    <td class="spin">${r.spin}</td>
+    <td>${tHTML}</td>
+    <td>
+      ${r.examples.map((e,i)=>`<div${i>0?' class="ex"':''}>${e}</div>`).join('')}
+      ${r.note?`<div class="note">${r.note}</div>`:''}
+    </td>
+    <td>
+      <span class="freq-n">${r.n}</span><span class="freq-abs">${r.n===1?'per year':'/ year'}</span>
+      <div class="freq-bar-wrap"><div class="freq-bar" style="width:${barW}%"></div></div>
+      <div class="freq-cadence">${r.cadence}</div>
+    </td>
+  </tr>`;
+}).join('');
+</script>
+</body>
+</html>
