@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEF Benchmark Matrix</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; padding: 24px; font-size: 12px; }
+  h2 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .subtitle { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .arrow-label { font-size: 10px; color: #aaa; margin-bottom: 8px; letter-spacing: 0.03em; }
+  .scroll-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; font-size: 11.5px; min-width: 1100px; width: 100%; }
+  col.param { width: 100px; }
+  col.tef   { width: 130px; }
+  col.org   { width: 130px; }
+  thead th { font-size: 10px; font-weight: 600; color: #888; padding: 0 8px 10px; text-align: left; border-bottom: 1px solid #e8e8e8; vertical-align: bottom; }
+  thead th.tef-h { border-top: 2px solid #378ADD; background: #f0f7ff; }
+  .oname { font-size: 12px; font-weight: 600; color: #1a1a1a; display: block; }
+  .osub  { font-size: 10px; font-weight: 400; color: #999; display: block; margin-top: 1px; }
+  .ohist { font-size: 9px; background: #fff3e0; color: #bf6c00; padding: 1px 5px; border-radius: 3px; display: inline-block; margin-top: 3px; }
+  .olink { font-size: 10px; color: #378ADD; display: block; margin-top: 3px; text-decoration: none; }
+  .olink:hover { text-decoration: underline; }
+  .sr td { background: #f7f7f5; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #aaa; padding: 5px 8px; border-bottom: 1px solid #e8e8e8; }
+  tbody tr { border-bottom: 1px solid #f2f2f2; }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 9px 8px; vertical-align: top; color: #444; line-height: 1.5; font-size: 11.5px; }
+  td.param { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #bbb; padding-top: 11px; }
+  td.tef-td { background: #f0f7ff; color: #1a5fa8; border-left: 2px solid #378ADD; border-right: 2px solid #378ADD; }
+  .last-row td.tef-td { border-bottom: 2px solid #378ADD; }
+  .vb { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 20px; white-space: nowrap; }
+  .vi  { background: #e6f4ee; color: #1a7a47; }
+  .vin { background: #fff3e0; color: #bf6c00; }
+  .vii { background: #ede9fe; color: #5b37b7; }
+  .vt  { background: #e6f1fb; color: #1a5fa8; }
+  .note { font-size: 10px; color: #bbb; margin-top: 4px; font-style: italic; }
+  .italic { font-style: italic; color: #bbb; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 10px 0 0; border-top: 1px solid #f0f0f0; margin-top: 10px; }
+  .li { display: flex; align-items: center; gap: 5px; font-size: 10px; color: #aaa; }
+  .ld { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .refbox { margin-top: 14px; padding: 10px 14px; background: #f7f7f5; border-radius: 6px; border: 1px solid #e8e8e8; font-size: 11px; color: #666; line-height: 1.7; }
+  .refbox-title { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #aaa; margin-bottom: 7px; }
+  .refbox a { color: #378ADD; text-decoration: none; font-weight: 600; }
+  .refbox a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h2>TEF — Benchmark matrix</h2>
+<p class="subtitle">Seven organisations compared across five parameters. TEF's proposed model is the reference column.</p>
+<div class="arrow-label">← closer to TEF</div>
+
+<div class="scroll-wrap">
+<table>
+<colgroup>
+  <col class="param">
+  <col class="tef">
+  <col class="org"><col class="org"><col class="org"><col class="org"><col class="org"><col class="org"><col class="org">
+</colgroup>
+<thead>
+  <tr>
+    <th></th>
+    <th class="tef-h">
+      <span class="oname">TEF</span>
+      <span class="osub">Our proposal</span>
+    </th>
+    <th>
+      <span class="oname">First Round Review</span>
+      <span class="osub">US seed VC</span>
+      <a class="olink" href="https://review.firstround.com" target="_blank">↗ review.firstround.com</a>
+    </th>
+    <th>
+      <span class="oname">a16z / Future</span>
+      <span class="osub">US VC</span>
+      <a class="olink" href="https://a16z.com/future" target="_blank">↗ a16z.com/future</a>
+    </th>
+    <th>
+      <span class="oname">McKinsey Global Institute</span>
+      <span class="osub">Consulting research arm</span>
+      <a class="olink" href="https://www.mckinsey.com/mgi" target="_blank">↗ mckinsey.com/mgi</a>
+    </th>
+    <th>
+      <span class="oname">Josh Wolfe / Lux</span>
+      <span class="osub">US deep tech VC</span>
+      <span class="ohist">Historical — pre-2023</span>
+      <a class="olink" href="https://www.luxcapital.com/news/changing-frontier-science" target="_blank">↗ example essay</a>
+    </th>
+    <th>
+      <span class="oname">UnternehmerTUM</span>
+      <span class="osub">EU deep tech ecosystem</span>
+      <a class="olink" href="https://www.unternehmertum.de/en/topics" target="_blank">↗ unternehmertum.de</a>
+    </th>
+    <th>
+      <span class="oname">Azeem Azhar</span>
+      <span class="osub">Exponential View</span>
+      <a class="olink" href="https://www.exponentialview.co" target="_blank">↗ exponentialview.co</a>
+    </th>
+    <th>
+      <span class="oname">Matt Clifford / EF</span>
+      <span class="osub">EU talent investor</span>
+      <a class="olink" href="https://www.matthewclifford.com" target="_blank">↗ matthewclifford.com</a>
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <tr class="sr"><td colspan="9">Core parameters</td></tr>
+  <tr>
+    <td class="param">Voice model</td>
+    <td class="tef-td"><span class="vb vt">Institutional</span></td>
+    <td><span class="vb vi">Institutional</span></td>
+    <td><span class="vb vii">Institutional + individual</span><div class="note">Deliberate dual track: named partners + Future as standalone brand</div></td>
+    <td><span class="vb vi">Institutional</span></td>
+    <td><span class="vb vin">Individual</span></td>
+    <td><span class="vb vii">Institutional + individual</span><div class="note">Institutional content alongside Schönenberger's personal media presence</div></td>
+    <td><span class="vb vin">Individual</span></td>
+    <td><span class="vb vin">Individual</span></td>
+  </tr>
+  <tr>
+    <td class="param">Editorial question</td>
+    <td class="tef-td">What does it take to turn European science into world-class ventures?</td>
+    <td>What do the best operators know that others don't?</td>
+    <td>How does technology reshape every industry — and what does that mean for founders and society?</td>
+    <td>What does the data say about how the economy and technology are changing — and what should leaders do?</td>
+    <td>What does science tell us about where technology and civilisation are heading?</td>
+    <td class="italic">No clear institutional thesis. Schönenberger's lens: how does Europe build world-class ventures from its research base?</td>
+    <td>How does exponential technology reshape economies, politics, and human possibility?</td>
+    <td>Why is the individual the most underleveraged unit of startup creation?</td>
+  </tr>
+  <tr>
+    <td class="param">Format</td>
+    <td class="tef-td">6 archetypes · biweekly · ~26/yr</td>
+    <td>Long-form interviews · no bylines · small editorial team · weekly</td>
+    <td>Essays · podcasts · topic newsletters · video · Future as standalone brand</td>
+    <td>Data-driven research reports · multiple per year · McKinsey Quarterly quarterly · no bylines</td>
+    <td>Quarterly LP letters as public essays · Forbes column · X/Twitter · keynotes · podcasts</td>
+    <td>Whitepapers · press releases · event recaps · Schönenberger via LinkedIn, media interviews, DLD and MSC keynotes</td>
+    <td>Weekly newsletter · annual State of Exponential Technology report · podcast</td>
+    <td>Weekly newsletter (archived 2018–22) · occasional media essays</td>
+  </tr>
+  <tr>
+    <td class="param">Editorial independence</td>
+    <td class="tef-td">Pieces never promote TEF programmes directly</td>
+    <td>Rarely covers First Round portfolio — reader-first mandate</td>
+    <td>Future operates as editorially separate brand</td>
+    <td>No McKinsey client or commercial angle</td>
+    <td>Firm worldview, not deal announcements</td>
+    <td>Institutional content largely tied to programmes and events. Schönenberger's voice addresses broader ecosystem topics</td>
+    <td>Fully independent — no institutional affiliation</td>
+    <td>Personal views explicitly separate from EF operations</td>
+  </tr>
+  <tr class="sr"><td colspan="9">Editorial risks — what TEF can learn</td></tr>
+  <tr>
+    <td class="param">Key editorial risk</td>
+    <td class="tef-td">Self-promotion creep: resisting the pull to use content to promote TEF programmes is the hardest discipline to maintain</td>
+    <td>Thesis drift: expanding beyond the original lens risks losing the audience that came for exactly that</td>
+    <td>Voice dilution at scale: as more partners and formats are added, the sharpness of the original editorial question softens</td>
+    <td>Data dependency: authority rests entirely on original data — without it, reports become commentary indistinguishable from competitors</td>
+    <td>Delegation risk: handing content to a hired journalist without preserving the original voice diluted what made Lux distinctive post-2023</td>
+    <td>Without a clear institutional editorial thesis, no compounding identity builds over time — individual voice fills the gap but cannot fully substitute</td>
+    <td>Single-person dependency: if Azhar stops, Exponential View stops</td>
+    <td>Individual departure: Clifford stepping back from EF CEO left a visible gap the institution hadn't built around</td>
+  </tr>
+  <tr class="sr"><td colspan="9">Relevance to TEF</td></tr>
+  <tr class="last-row">
+    <td class="param">TEF takeaway</td>
+    <td class="tef-td" style="font-weight:600;color:#1a5fa8">Reference row</td>
+    <td>Closest structural model. Small editorial team, high bar, consistent thesis, no self-promotion. The discipline is the product.</td>
+    <td>Strategic reference regardless of scale: content as institutional infrastructure. Individual and institutional voices can reinforce each other deliberately over time.</td>
+    <td>Model for TEF's data-driven archetypes. TEF's proprietary deal flow, programme, and fellowship data is the equivalent asset.</td>
+    <td>Best reference for content depth, intellectual ambition, and multi-format individual voice. The pre-2023 full operation is directly applicable to TEF's territory.</td>
+    <td>The closest European peer. Schönenberger shows individual voice can carry institutional weight — but without an editorial thesis, the institution's voice doesn't compound. TEF's opening.</td>
+    <td>Tone reference for technology takes and policy briefs. Best active example of science-technology-policy lens with a European perspective.</td>
+    <td>Informative contrast. Individual voice builds authority fast — and shows how exposed the institution becomes when that individual moves on.</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div class="legend">
+  <div class="li"><div class="ld" style="background:#e6f4ee;border:1px solid #7ecfa4"></div>Institutional</div>
+  <div class="li"><div class="ld" style="background:#fff3e0;border:1px solid #f0b959"></div>Individual</div>
+  <div class="li"><div class="ld" style="background:#ede9fe;border:1px solid #b09ee0"></div>Institutional + individual</div>
+</div>
+
+<div class="refbox" style="margin-top:20px">
+  <div class="refbox-title">The European landscape — active but not equivalent</div>
+  The most serious voices in Europe's deep tech space operate in different registers. <a href="https://sifted.eu" target="_blank">Sifted</a> covers European deep tech with genuine editorial rigour, but as journalism — news-driven, from the outside. <a href="https://dealroom.co" target="_blank">Dealroom</a> produces a wide range of data reports across the European ecosystem, including on deep tech, sometimes in partnership with other players — rigorous and widely cited, but without editorial narrative. Several European VC funds — notably <a href="https://www.speedinvest.com/blog-categories/deep-tech" target="_blank">Speedinvest</a>, <a href="https://www.balderton.com" target="_blank">Balderton</a>, and <a href="https://www.atomico.com" target="_blank">Atomico</a> — publish with content ambitions, but their output is either portfolio-adjacent, generalist, or data-driven rather than editorially led.<br><br>
+  None of these combine science commercialisation, venture creation, and cultural change under a consistent editorial identity.
+</div>
+
+<div class="refbox" style="margin-top:10px">
+  <div class="refbox-title">Also referenced — not benchmarked</div>
+  <a href="https://press.stripe.com" target="_blank">Stripe Press</a> — curation as institutional identity: publishing what you believe in is itself an editorial voice. &nbsp;·&nbsp;
+  <a href="https://stratechery.com" target="_blank">Ben Thompson / Stratechery</a> — the gold standard for applying a single analytical lens to every piece, consistently, over years. &nbsp;·&nbsp;
+  <a href="https://www.ben-evans.com" target="_blank">Benedict Evans</a> — technology analysis with a rigorous recurring lens, no institutional machinery required.
+</div>
+
+</body>
+</html>
