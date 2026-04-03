@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEF LinkedIn Content Archetypes</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; padding: 2rem; }
+  h1 { font-size: 15px; font-weight: 500; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5rem; }
+  .wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+  col.c0 { width: 14%; } col.c1 { width: 21%; } col.c2 { width: 19%; } col.c3 { width: 22%; } col.c4 { width: 24%; }
+  thead th { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #999; padding: 0 10px 10px; text-align: left; border-bottom: 0.5px solid #ddd; }
+  tbody tr { border-bottom: 0.5px solid #eee; }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 10px; vertical-align: top; line-height: 1.5; }
+  td.name { font-weight: 500; color: #1a1a1a; font-size: 13px; }
+  .sub { font-size: 12px; color: #aaa; margin-top: 3px; font-weight: 400; }
+  .spin { font-size: 13px; color: #555; }
+  .ex { font-size: 12px; color: #aaa; margin-top: 5px; }
+  .note { font-size: 11px; color: #aaa; margin-top: 6px; font-style: italic; border-top: 0.5px solid #eee; padding-top: 5px; }
+  .tg { margin-bottom: 5px; }
+  .tg-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: #bbb; margin-bottom: 3px; }
+  .pill { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 7px; border-radius: 20px; margin: 2px 2px 0 0; }
+  .pill-vc  { background: #E6F1FB; color: #0C447C; }
+  .pill-do  { background: #E1F5EE; color: #085041; }
+  .pill-st  { background: #FAEEDA; color: #633806; }
+  .pill-m   { background: transparent; color: #888; border: 0.5px solid #ccc; }
+  .voice-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 7px; border-radius: 20px; background: #EEEDFE; color: #3C3489; margin: 2px 2px 0 0; }
+  .voice-tef { background: #E1F5EE; color: #085041; }
+  .framing { font-size: 12px; color: #777; font-style: italic; margin-top: 6px; padding-top: 5px; border-top: 0.5px solid #eee; }
+</style>
+</head>
+<body>
+<h1>TEF LinkedIn — Content Archetypes</h1>
+<div class="wrap">
+<table>
+  <colgroup><col class="c0"><col class="c1"><col class="c2"><col class="c3"><col class="c4"></colgroup>
+  <thead>
+    <tr>
+      <th>Archetype</th>
+      <th>What it does</th>
+      <th>Voice</th>
+      <th>Targets</th>
+      <th>Formats & framing question</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+</div>
+<script>
+const T = {
+  vc: { label: "VCs, mentors, late founders", cls: "pill-vc" },
+  do: { label: "Donors, institutions",        cls: "pill-do" },
+  st: { label: "Students, researchers, early founders", cls: "pill-st" },
+};
+
+const rows = [
+  {
+    name: "Point of view",
+    sub: "1× / week — Luca, Fri",
+    spin: "Takes a position on a structural issue — the lab-to-market gap, capital allocation in deep tech, European IP policy. Not commentary: an argument with a thesis. On weeks without a published article, the post carries the same editorial weight in a shorter format.",
+    voice: [{label:"Luca",type:"personal"}],
+    targets: { primary: [T.vc], secondary: [T.do], marginal: [T.st] },
+    formats: ["Short essay or thread", "Reaction to a relevant event or publication", "Open question that invites a genuine position"],
+    framing: "Does this say something a well-connected deep tech operator hasn't already heard?",
+    note: null
+  },
+  {
+    name: "Technology spotlight",
+    sub: "1× / week",
+    spin: "Showcases atypical, extraordinary technology — what is being built, why it matters, what it changes. Primarily focused on TEF-backed ventures and their products, but open to edge technologies from outside when genuinely remarkable. Rewards specificity; avoids hype.",
+    voice: [{label:"TEF",type:"tef"},{label:"Team",type:"personal"}],
+    targets: { primary: [T.vc], secondary: [T.st], marginal: [T.do] },
+    formats: ["Short video on a technology or product — one possible format, not the default", "\"What is X and why does it change Y\" post", "Product unboxing — what is this TEF venture actually building?", "Edge or breakthrough technology from outside the portfolio when exceptional"],
+    framing: "Does this make someone genuinely excited about what is possible?",
+    note: null
+  },
+  {
+    name: "People & journeys",
+    sub: "1× / week",
+    spin: "Makes the human story of deep tech visible. Researchers who became founders, operators who chose to give back, builders at work. TEF does not claim credit — it gives these stories the reach and context they deserve.",
+    voice: [{label:"TEF",type:"tef"},{label:"Team",type:"personal"}],
+    targets: { primary: [T.st], secondary: [T.do], marginal: [T.vc] },
+    formats: ["\"One day in a startup\" documentary short", "Alumni or mentor story", "Participant experience — cohort outcomes, not open calls", "Call to action, when built behind a story — never as the lead"],
+    framing: "Does this make someone want to be part of this world — without asking them to be?",
+    note: "Video is a natural fit here alongside Technology spotlight — no strict rule, use judgment."
+  },
+  {
+    name: "Ecosystem milestone",
+    sub: "1× / week",
+    spin: "Surfaces meaningful milestones — primarily from TEF's community, acceptable from outside when relevant to a broader reading and coherent with TEF's identity. TEF is the curator with a point of view, never a neutral relay. A program manager sharing a milestone from a startup they followed is a natural fit; generic reshares are not.",
+    voice: [{label:"TEF",type:"tef"},{label:"Team",type:"personal"}],
+    targets: { primary: [T.do], secondary: [T.vc], marginal: [T.st] },
+    formats: ["Portfolio milestone framed as an ecosystem signal, not a TEF achievement", "External milestone connected to TEF's worldview", "Clear, replicable asset — almost never a video"],
+    framing: "Does TEF's framing of this milestone say something beyond the milestone itself?",
+    note: null
+  },
+  {
+    name: "Behind TEF",
+    sub: "2× / month",
+    spin: "Shows how TEF works from the inside — the operational reality behind the programs, the decisions being made, the people making them. Makes TEF concrete, approachable, and credible as an organization that executes, not only one that aspires. Call to actions are acceptable and often more effective here than from the brand page.",
+    voice: [{label:"Team",type:"personal"}],
+    targets: { primary: [T.vc], secondary: [T.st], marginal: [T.do] },
+    formats: ["A program manager on what they learned running a cohort", "A decision made inside TEF — what the tradeoff was", "A milestone shared by the person who made it happen", "Open call posted by the responsible team member — more credible than brand announcement"],
+    framing: "Does this make TEF feel like a real organization run by people worth following?",
+    note: "Rarely a video. Voice is always a specific team member, never the TEF brand page."
+  }
+];
+
+document.getElementById('tbody').innerHTML = rows.map(r => {
+  const voiceHTML = r.voice.map(v => `<span class="pill voice-tag ${v.type==='tef'?'voice-tef':''}">${v.label}</span>`).join('');
+  const tiers = ['primary','secondary','marginal'].filter(t => r.targets[t]?.length);
+  const targetHTML = tiers.map(t => {
+    const isMarginal = t === 'marginal';
+    return `<div class="tg"><div class="tg-label">${t}</div>${r.targets[t].map(x => `<span class="pill ${isMarginal ? 'pill-m' : x.cls}">${x.label}</span>`).join('')}</div>`;
+  }).join('');
+  const fmtHTML = r.formats.map((f,i) => `<div${i>0?' class="ex"':''}>${f}</div>`).join('');
+  return `<tr>
+    <td class="name">${r.name}<div class="sub">${r.sub}</div></td>
+    <td class="spin">${r.spin}</td>
+    <td>${voiceHTML}</td>
+    <td>${targetHTML}</td>
+    <td>${fmtHTML}<div class="framing">${r.framing}</div>${r.note?`<div class="note">${r.note}</div>`:''}</td>
+  </tr>`;
+}).join('');
+</script>
+</body>
+</html>
