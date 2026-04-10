@@ -4,25 +4,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:
 .meta{font-size:11px;font-weight:500;color:#888780;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
 table{width:100%;border-collapse:collapse;table-layout:fixed}
 th{padding:8px 12px;font-size:11px;font-weight:500;color:#888780;text-align:left;border-bottom:1.5px solid #e5e4de}
-th:first-child{width:20%}
-th:nth-child(2),th:nth-child(3),th:nth-child(4){width:26.6%}
-td{padding:10px 12px;font-size:12.5px;vertical-align:top;border-bottom:0.5px solid #e5e4de;line-height:1.55;color:#1a1a18}
+th:first-child{width:13%}
+th:nth-child(2){width:22%}
+th:nth-child(3){width:10%}
+th:nth-child(4),th:nth-child(5),th:nth-child(6){width:18.3%}
+td{padding:10px 12px;font-size:12px;vertical-align:top;border-bottom:0.5px solid #e5e4de;line-height:1.55;color:#1a1a18}
 tr:last-child td{border-bottom:none}
-.uc-name{font-weight:500;font-size:13px;display:block;margin-bottom:3px;color:#1a1a18}
-.uc-sub{font-size:11px;color:#888780;line-height:1.5;display:block}
+.uc-name{font-weight:500;font-size:12.5px;display:block;color:#1a1a18}
 .bh{display:inline-block;font-size:11px;padding:2px 9px;border-radius:4px;font-weight:500;margin-bottom:7px;background:#e6f1fb;color:#0c447c}
 .ba{display:inline-block;font-size:11px;padding:2px 9px;border-radius:4px;font-weight:500;margin-bottom:7px;background:#e1f5ee;color:#085041}
 .bt{display:inline-block;font-size:11px;padding:2px 9px;border-radius:4px;font-weight:500;margin-bottom:7px;background:#f1efe8;color:#5f5e5a}
 ul{padding-left:13px;margin:0}
-li{margin-bottom:4px;font-size:12.5px;line-height:1.5}
+li{margin-bottom:4px;font-size:12px;line-height:1.5}
 li:last-child{margin-bottom:0}
+.lo{color:#c4600a}
+.lg{color:#888780}
+.grn{background:#eaf3de}
+.pods{font-size:12px;color:#888780}
 .total-row td{font-weight:500;background:#f8f7f4;border-top:1.5px solid #d3d1c7;border-bottom:none;font-size:13px}
 .note{font-size:11.5px;color:#888780;margin-top:.75rem;padding:7px 12px;border-left:2px solid #d3d1c7;line-height:1.6}
 @media(prefers-color-scheme:dark){
   body{color:#e8e6df}
   td,li,.uc-name{color:#e8e6df}
-  th,.uc-sub,.meta,.note{color:#888780}
+  .lg,.pods{color:#888780}
+  th,.meta,.note{color:#888780}
   table,th,td{border-color:#444441}
+  .grn{background:#173404}
   .total-row td{background:#2c2c2a;border-color:#5f5e5a}
   .note{border-color:#5f5e5a}
   .bh{background:#0c447c;color:#b5d4f4}
@@ -36,6 +43,8 @@ li:last-child{margin-bottom:0}
   <thead>
     <tr>
       <th>Use case</th>
+      <th>Details</th>
+      <th>Current pods</th>
       <th><span class="bh">HubSpot</span></th>
       <th><span class="ba">Attio Pro + Mailchimp</span></th>
       <th><span class="bt">Custom on Airtable</span></th>
@@ -43,15 +52,19 @@ li:last-child{margin-bottom:0}
   </thead>
   <tbody>
     <tr>
-      <td>
-        <span class="uc-name">Network management</span>
-        <span class="uc-sub">Contacts, companies, relations, Outlook sync, call recordings, reminders</span>
-      </td>
+      <td><span class="uc-name">Network management</span></td>
+      <td><ul>
+        <li class="lo">Centralised contact and company database</li>
+        <li class="lo">Basic contact storage and uploads</li>
+        <li class="lg">Outlook sync, call recordings, and reminders</li>
+        <li class="lg">Filtering by sector, stage, and geography</li>
+      </ul></td>
+      <td class="pods">Fundraising, Marketing, Growth</td>
       <td><ul>
         <li>Built-in contacts, companies, etc. — equivalent to Attio</li>
         <li>As complexity increases, custom objects can be purchased separately</li>
       </ul></td>
-      <td><ul>
+      <td class="grn"><ul>
         <li>Built-in contacts, companies, etc. — Attio equivalent to HubSpot</li>
         <li>As complexity increases, custom objects are included in the costs</li>
       </ul></td>
@@ -60,14 +73,20 @@ li:last-child{margin-bottom:0}
       </ul></td>
     </tr>
     <tr>
-      <td>
-        <span class="uc-name">Program execution</span>
-        <span class="uc-sub">Participants, cohorts, session attendance, milestones, resources received, interactions</span>
-      </td>
+      <td><span class="uc-name">Program execution</span></td>
+      <td><ul>
+        <li class="lo">Deal tracking</li>
+        <li class="lo">Feedback collection</li>
+        <li class="lo">Eventbrite integration</li>
+        <li class="lo">Participant and cohort tracking</li>
+        <li class="lg">Session attendance, milestones, resources received</li>
+        <li class="lg">Event attendance tracking</li>
+      </ul></td>
+      <td class="pods">Fundraising, Marketing, Data</td>
       <td><ul>
         <li>Basic relations are doable; complexity and costs increase as data model grows</li>
       </ul></td>
-      <td><ul>
+      <td class="grn"><ul>
         <li>Programs, cohorts, editions, participants, and interactions can be mapped as custom objects — session attendance, milestones, and resources received can be modelled natively</li>
       </ul></td>
       <td><ul>
@@ -75,11 +94,15 @@ li:last-child{margin-bottom:0}
       </ul></td>
     </tr>
     <tr>
-      <td>
-        <span class="uc-name">Email campaigns</span>
-        <span class="uc-sub">Newsletters, event invitations, program communications, community building</span>
-      </td>
+      <td><span class="uc-name">Email campaigns</span></td>
       <td><ul>
+        <li class="lo">Mass email sends</li>
+        <li class="lo">Basic open/click analytics</li>
+        <li class="lo">Segmentation and multi-step automation</li>
+        <li class="lg">Structured templates</li>
+      </ul></td>
+      <td class="pods">Marketing, Research</td>
+      <td class="grn"><ul>
         <li>Native. Segmentation, multi-step automation, and analytics in one platform</li>
       </ul></td>
       <td><ul>
@@ -91,11 +114,14 @@ li:last-child{margin-bottom:0}
       </ul></td>
     </tr>
     <tr>
-      <td>
-        <span class="uc-name">Funnel management</span>
-        <span class="uc-sub">Awareness to conversion, sales cycles — fundraising, top-of-funnel startup programs</span>
-      </td>
+      <td><span class="uc-name">Funnel management</span></td>
       <td><ul>
+        <li class="lo">Deal pipeline for fundraising and venture</li>
+        <li class="lg">Pipeline stages from awareness to conversion</li>
+        <li class="lg">Marketing engagement feeding contact records</li>
+      </ul></td>
+      <td class="pods">Fundraising</td>
+      <td class="grn"><ul>
         <li>Pipeline and deal stages native. Multiple pipelines with custom stages; marketing engagement data feeds contact and deal records automatically</li>
       </ul></td>
       <td><ul>
@@ -106,11 +132,15 @@ li:last-child{margin-bottom:0}
       </ul></td>
     </tr>
     <tr>
-      <td>
-        <span class="uc-name">Contact engagement intelligence</span>
-        <span class="uc-sub">All interaction signals — program participation, emails, events, web, social — unified on each contact record</span>
-      </td>
+      <td><span class="uc-name">Contact engagement intelligence</span></td>
       <td><ul>
+        <li class="lo">Email opens and event attendance tracking</li>
+        <li class="lg">Unified interaction timeline per contact</li>
+        <li class="lg">Programme participation signals</li>
+        <li class="lg">Web and social signals</li>
+      </ul></td>
+      <td class="pods">Marketing</td>
+      <td class="grn"><ul>
         <li>Native. Interactions (program participation, email opens, event attendance, web and social media signals) aggregated on contact timelines</li>
       </ul></td>
       <td><ul>
@@ -122,6 +152,8 @@ li:last-child{margin-bottom:0}
     </tr>
     <tr class="total-row">
       <td>Total annual cost</td>
+      <td></td>
+      <td></td>
       <td>€17,147</td>
       <td>€9,281</td>
       <td>TBD</td>
