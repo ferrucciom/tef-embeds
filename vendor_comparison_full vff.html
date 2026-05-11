@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor Comparison – MacBook Air M5</title>
+<style>
+  :root {
+    --c-bg:        #ffffff;
+    --c-surface:   #f5f5f7;
+    --c-border:    #d2d2d7;
+    --c-border-strong: #b0b0b5;
+    --c-text:      #1d1d1f;
+    --c-muted:     #6e6e73;
+    --c-label-bg:  #f0f0f2;
+    --c-section:   #e8e8ed;
+    --c-mac:       #e8f0fe;
+    --c-win:       #fef8e8;
+    --c-apple-biz: #e8f5e9;
+    --c-apple-biz-head: #c8e6c9;
+    --c-na:        #f5f5f7;
+    --c-warn:      #fff3cd;
+    --c-warn-text: #856404;
+    --c-positive:  #d4edda;
+    --c-negative:  #f8d7da;
+    --c-highlight: #1a73e8;
+    --radius:      4px;
+    --font-body:   'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono:   'SF Mono', 'Fira Code', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--c-text);
+    background: var(--c-bg);
+    line-height: 1.45;
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--c-text);
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    color: var(--c-muted);
+    margin-bottom: 16px;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 1100px;
+  }
+
+  /* ── HEADER ROW 1: vendor names ── */
+  thead tr.row-vendor th {
+    background: var(--c-surface);
+    border-bottom: 1px solid var(--c-border);
+    padding: 10px 10px 6px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--c-text);
+    white-space: nowrap;
+  }
+  thead tr.row-vendor th.th-label {
+    background: var(--c-bg);
+    border-right: 1px solid var(--c-border-strong);
+  }
+  thead tr.row-vendor th.vendor-apple-biz {
+    background: var(--c-apple-biz-head);
+    color: #1b5e20;
+  }
+
+  /* ── HEADER ROW 2: device names ── */
+  thead tr.row-device th {
+    background: var(--c-surface);
+    border-bottom: 2px solid var(--c-border-strong);
+    padding: 6px 10px 8px;
+    text-align: center;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--c-muted);
+    white-space: nowrap;
+  }
+  thead tr.row-device th.th-label {
+    background: var(--c-bg);
+    border-right: 1px solid var(--c-border-strong);
+  }
+  thead tr.row-device th.device-mac {
+    background: var(--c-mac);
+    color: #1a56c4;
+  }
+  thead tr.row-device th.device-win {
+    background: var(--c-win);
+    color: #7a5a00;
+  }
+  thead tr.row-device th.device-apple-biz {
+    background: var(--c-apple-biz);
+    color: #2e7d32;
+    border-bottom: 2px solid var(--c-border-strong);
+  }
+
+  /* ── BODY ── */
+  tbody tr td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--c-border);
+    vertical-align: top;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  tbody tr td.td-label {
+    font-weight: 600;
+    background: var(--c-label-bg);
+    border-right: 1px solid var(--c-border-strong);
+    color: var(--c-text);
+    white-space: nowrap;
+    min-width: 170px;
+  }
+
+  tbody tr td.td-mac {
+    background: rgba(232,240,254,0.25);
+  }
+  tbody tr td.td-win {
+    background: rgba(254,248,232,0.25);
+  }
+  tbody tr td.td-apple-biz {
+    background: rgba(232,245,233,0.4);
+    color: var(--c-text);
+  }
+  tbody tr td.td-na {
+    background: var(--c-na);
+    color: var(--c-muted);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* section header rows */
+  tbody tr.row-section td {
+    background: var(--c-section);
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c-muted);
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--c-border-strong);
+  }
+
+  /* vendor separator */
+  td.sep-vendor, th.sep-vendor {
+    border-left: 2px solid var(--c-border-strong) !important;
+  }
+  td.sep-apple, th.sep-apple {
+    border-left: 2px solid #66bb6a !important;
+  }
+
+  /* amount styling */
+  .amount {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .amount-big {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a73e8;
+  }
+  .amount-purchase {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: #2e7d32;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-top: 3px;
+    margin-right: 2px;
+    white-space: nowrap;
+  }
+  .tag-warn {
+    background: var(--c-warn);
+    color: var(--c-warn-text);
+  }
+  .tag-ok {
+    background: var(--c-positive);
+    color: #155724;
+  }
+  .tag-info {
+    background: #cfe2ff;
+    color: #084298;
+  }
+
+  .sub {
+    display: block;
+    font-size: 10px;
+    color: var(--c-muted);
+    margin-top: 2px;
+  }
+
+  .warn-icon { color: #f0a500; }
+
+  /* footer */
+  .footer {
+    margin-top: 12px;
+    font-size: 10px;
+    color: var(--c-muted);
+    line-height: 1.6;
+    border-top: 1px solid var(--c-border);
+    padding-top: 10px;
+  }
+  .footer strong { color: var(--c-text); }
+</style>
+</head>
+<body>
+
+<h1>Confronto Fornitori — MacBook Air M5</h1>
+<p class="subtitle">Tutti gli importi IVA incl. al 22% · Aggiornato maggio 2026</p>
+
+<div class="table-wrapper">
+<table>
+<thead>
+  <tr class="row-vendor">
+    <th class="th-label" rowspan="2"></th>
+    <th colspan="2">Rekordata</th>
+    <th colspan="2" class="sep-vendor">Fleet</th>
+    <th colspan="2" class="sep-vendor">CHG-Meridian</th>
+    <th colspan="2" class="sep-vendor">Econocom</th>
+    <th colspan="1" class="sep-apple vendor-apple-biz">Apple for Business</th>
+  </tr>
+  <tr class="row-device">
+    <th class="device-mac">MacBook Air M5</th>
+    <th class="device-win">ThinkPad E14 Gen7</th>
+    <th class="device-mac sep-vendor">MacBook Air M5</th>
+    <th class="device-win">Lenovo V15 G5</th>
+    <th class="device-mac sep-vendor">MacBook Air M5</th>
+    <th class="device-win">X1 Carbon G13 <span class="warn-icon">⚠</span></th>
+    <th class="device-mac sep-vendor">MacBook Air M5</th>
+    <th class="device-win">Lenovo L13 Gen6 AMD</th>
+    <th class="device-apple-biz sep-apple">MacBook Air M5<br><span style="font-weight:400;font-size:9.5px;color:#388e3c">Acquisto diretto</span></th>
+  </tr>
+</thead>
+<tbody>
+
+  <!-- ───── SPECIFICHE ───── -->
+  <tr class="row-section">
+    <td colspan="11">Specifiche</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Chip / CPU</td>
+    <td class="td-mac">Apple M5 10-core</td>
+    <td class="td-win">Intel Core Ultra 7 255H</td>
+    <td class="td-mac sep-vendor">Apple M5 10-core</td>
+    <td class="td-win">Intel Core i7</td>
+    <td class="td-mac sep-vendor">Apple M5 10-core</td>
+    <td class="td-win">Intel Core Ultra 7 255U</td>
+    <td class="td-mac sep-vendor">Apple M5 10-core</td>
+    <td class="td-win">AMD Ryzen 5 PRO 215</td>
+    <td class="td-apple-biz sep-apple">Apple M5 10-core<span class="sub">GPU 8-core · Neural Engine 16-core</span></td>
+  </tr>
+
+  <tr>
+    <td class="td-label">RAM / Storage</td>
+    <td class="td-mac">16 GB / 512 GB</td>
+    <td class="td-win">16 GB / 512 GB</td>
+    <td class="td-mac sep-vendor">16 GB / 512 GB</td>
+    <td class="td-win">16 GB / 512 GB</td>
+    <td class="td-mac sep-vendor">16 GB / 512 GB</td>
+    <td class="td-win">32 GB / 1 TB <span class="tag tag-warn">sovradimensionato</span></td>
+    <td class="td-mac sep-vendor">16 GB / 512 GB</td>
+    <td class="td-win">16 GB / 512 GB</td>
+    <td class="td-apple-biz sep-apple">16 GB / 512 GB SSD</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Display</td>
+    <td class="td-mac">13,6" Retina</td>
+    <td class="td-win">14" IPS 1920×1200</td>
+    <td class="td-mac sep-vendor">13,6" Retina</td>
+    <td class="td-win">15,6"</td>
+    <td class="td-mac sep-vendor">13,6" Retina</td>
+    <td class="td-win">14" IPS</td>
+    <td class="td-mac sep-vendor">13,6" Retina</td>
+    <td class="td-win">13,3" WUXGA IPS</td>
+    <td class="td-apple-biz sep-apple">13,6" Retina</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">OS</td>
+    <td class="td-mac">macOS</td>
+    <td class="td-win">Windows 11 Pro</td>
+    <td class="td-mac sep-vendor">macOS</td>
+    <td class="td-win">Windows 11 Pro</td>
+    <td class="td-mac sep-vendor">macOS</td>
+    <td class="td-win">Windows 11 Pro</td>
+    <td class="td-mac sep-vendor">macOS</td>
+    <td class="td-win">Windows 11 Pro</td>
+    <td class="td-apple-biz sep-apple">macOS</td>
+  </tr>
+
+  <!-- ───── COPERTURA ───── -->
+  <tr class="row-section">
+    <td colspan="11">Copertura</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Danni accidentali</td>
+    <td class="td-mac">2 interventi per device, no franchigia</td>
+    <td class="td-win">ADP ONE + 3Y Depot</td>
+    <td class="td-mac sep-vendor">Illimitati</td>
+    <td class="td-win">Illimitati</td>
+    <td class="td-mac sep-vendor">Scoperto 25% (min. €500) — non riducibile</td>
+    <td class="td-win"></td>
+    <td class="td-mac sep-vendor">1 intervento per device <span class="sub">EcoCare P&amp;R</span></td>
+    <td class="td-win">1 intervento per device <span class="sub">ADP ONE Lenovo</span></td>
+    <td class="td-apple-biz sep-apple">Illimitati <span class="sub">AppleCare+ · cadute e liquidi coperti</span><span class="sub">Franchigia: €99 schermo/guscio · €259 altri danni</span></td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Furto</td>
+    <td class="td-mac">Incluso <span class="sub">(polizza)</span></td>
+    <td class="td-win">Incluso <span class="sub">(polizza)</span></td>
+    <td class="td-mac sep-vendor">Incluso</td>
+    <td class="td-win">Incluso</td>
+    <td class="td-mac sep-vendor">Incluso — scoperto 30% (min. €250) — non riducibile</td>
+    <td class="td-win"></td>
+    <td class="td-mac sep-vendor">Incluso <span class="sub">(effrazione e/o destrezza)</span></td>
+    <td class="td-win"></td>
+    <td class="td-na sep-apple">N/A<span class="sub">AppleCare+ standard non copre furto</span></td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Manutenzione / Assistenza</td>
+    <td class="td-mac">Malfunzionamenti illimitati, portale asset</td>
+    <td class="td-win">Gestione end-to-end Rekordata <span class="sub">(ritiro, ripar., riconsegna)</span></td>
+    <td class="td-mac sep-vendor">Inclusa <span class="sub">(ripar./sostit. + logistica + piattaforma)</span></td>
+    <td class="td-win">Inclusa</td>
+    <td class="td-mac sep-vendor">Non inclusa — vendor support optional a pagamento</td>
+    <td class="td-win"></td>
+    <td class="td-mac sep-vendor">Vendor support incluso — onsite optional</td>
+    <td class="td-win">Premier Support 3Y incluso</td>
+    <td class="td-apple-biz sep-apple">Assistenza prioritaria 24/7 (chat e telefono)<span class="sub">AppleCare+ · esperti Apple</span><span class="sub">Sostituzione batteria se capacità &lt;80%</span></td>
+  </tr>
+
+  <!-- ───── CONDIZIONI ECONOMICHE ───── -->
+  <tr class="row-section">
+    <td colspan="11">Condizioni economiche</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Periodicità</td>
+    <td class="td-mac">Trimestrale</td>
+    <td class="td-win">Trimestrale</td>
+    <td class="td-mac sep-vendor">Mensile</td>
+    <td class="td-win">Mensile</td>
+    <td class="td-mac sep-vendor">Mensile</td>
+    <td class="td-win">Mensile</td>
+    <td class="td-mac sep-vendor">Mensile</td>
+    <td class="td-win">Mensile</td>
+    <td class="td-apple-biz sep-apple">Acquisto unico</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Spese accessorie</td>
+    <td class="td-mac">€30,50 istruttoria</td>
+    <td class="td-win">€50,00 istruttoria + €48,00 incasso <span class="sub">(non param.)</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 0</span></td>
+    <td class="td-win"><span class="amount">€ 0</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 0</span></td>
+    <td class="td-win"><span class="amount">€ 0</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 0</span></td>
+    <td class="td-win"><span class="amount">€ 0</span></td>
+    <td class="td-na sep-apple">N/A</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Anticipo</td>
+    <td class="td-mac"><span class="amount">€ 0</span></td>
+    <td class="td-win"><span class="amount">€ 0</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 0</span></td>
+    <td class="td-win"><span class="amount">€ 0</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 0</span></td>
+    <td class="td-win"><span class="amount">€ 0</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 0</span></td>
+    <td class="td-win"><span class="amount">€ 0</span></td>
+    <td class="td-na sep-apple">N/A</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Indicizzazione</td>
+    <td class="td-mac">Fisso</td>
+    <td class="td-win">Fisso</td>
+    <td class="td-mac sep-vendor">Fisso</td>
+    <td class="td-win">Fisso</td>
+    <td class="td-mac sep-vendor">Formalmente fisso — CHG si riserva revisione se IRS 3Y cambia</td>
+    <td class="td-win"></td>
+    <td class="td-mac sep-vendor">Fisso</td>
+    <td class="td-win">Fisso</td>
+    <td class="td-na sep-apple">N/A</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Rata 36m IVA incl.</td>
+    <td class="td-mac"><span class="amount">€ 112,18</span><span class="sub">trimestrale</span></td>
+    <td class="td-win"><span class="amount">€ 111,98</span><span class="sub">trimestrale</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 65,76</span><span class="sub">mensile</span></td>
+    <td class="td-win"><span class="amount">€ 43,80</span><span class="sub">mensile</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 31,22</span><span class="sub">mensile</span></td>
+    <td class="td-win"><span class="amount">€ 68,39</span><span class="sub">mensile · non comparabile</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 40,20</span><span class="sub">mensile · incl. EcoCare</span></td>
+    <td class="td-win"><span class="amount">€ 34,29</span><span class="sub">mensile · incl. Premier Support + ADP</span></td>
+    <td class="td-na sep-apple">N/A</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Rata 24m<span class="sub">stima non ufficiale<br>(totale 36m ÷ rate 24m,<br>CHG da coeff. ufficiale)</span></td>
+    <td class="td-mac"><span class="amount">€ 172,08</span><span class="sub">trimestrale · totale 36m ÷ 8 rate</span></td>
+    <td class="td-win"><span class="amount">€ 182,92</span><span class="sub">trimestrale · totale 36m ÷ 8 rate</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 98,64</span><span class="sub">mensile · totale 36m ÷ 24 rate</span></td>
+    <td class="td-win"><span class="amount">€ 65,70</span><span class="sub">mensile · totale 36m ÷ 24 rate</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 41,10</span><span class="sub">mensile · coeff. 3,33% confermato da CHG</span></td>
+    <td class="td-win">n/d <span class="sub">non comparabile</span></td>
+    <td class="td-mac sep-vendor"><span class="amount">€ 60,30</span><span class="sub">mensile · totale 36m ÷ 24 rate</span></td>
+    <td class="td-win"><span class="amount">€ 51,44</span><span class="sub">mensile · totale 36m ÷ 24 rate</span></td>
+    <td class="td-na sep-apple">N/A</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Totale 36m IVA incl.</td>
+    <td class="td-mac"><span class="amount-big">€ 1.376,65</span></td>
+    <td class="td-win"><span class="amount-big">€ 1.463,37</span><span class="sub">incl. spese accessorie</span></td>
+    <td class="td-mac sep-vendor"><span class="amount-big">€ 2.367,36</span></td>
+    <td class="td-win"><span class="amount-big">€ 1.576,80</span></td>
+    <td class="td-mac sep-vendor"><span class="amount-big">€ 1.123,92</span></td>
+    <td class="td-win"><span class="amount-big">€ 2.462,04</span><span class="sub">non comparabile</span></td>
+    <td class="td-mac sep-vendor"><span class="amount-big">€ 1.447,20</span></td>
+    <td class="td-win"><span class="amount-big">€ 1.234,44</span></td>
+    <td class="td-apple-biz sep-apple"><span class="amount-purchase">€ 1.468,00</span><span class="sub">device €1.249,00 + AppleCare+ €219,00</span><span class="sub">(piano triennale prepagato)</span><span class="sub">imponibile device: €1.017,70<br>+ IVA €225,23 + copyright €6,07</span></td>
+  </tr>
+
+  <!-- ───── FLESSIBILITÀ CONTRATTUALE ───── -->
+  <tr class="row-section">
+    <td colspan="11">Flessibilità contrattuale</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Interruzione anticipata</td>
+    <td class="td-mac" colspan="2">Canoni residui dovuti <span class="sub">(calcolo lineare)</span></td>
+    <td class="td-mac sep-vendor" colspan="2">Libera dopo 12 mesi, senza penale <span class="sub">Prima dei 12 mesi: non specificato</span></td>
+    <td class="td-mac sep-vendor" colspan="2">Canoni residui dovuti <span class="sub">(calcolo lineare) · Confermato per iscritto</span></td>
+    <td class="td-mac sep-vendor" colspan="2">Canoni residui dovuti. Il valore commerciale residuo del device viene valutato e riconosciuto in riduzione — il costo effettivo è inferiore ai canoni residui puri <span class="sub">Confermato per iscritto</span></td>
+    <td class="td-na sep-apple">N/A</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Sostituzione anticipata</td>
+    <td class="td-mac" colspan="2">Canoni residui dovuti + restituzione device</td>
+    <td class="td-mac sep-vendor" colspan="2">Libera dopo 12 mesi — chiusura contratto + nuovo contratto, senza penale <span class="sub">Prima dei 12 mesi: non specificato</span></td>
+    <td class="td-mac sep-vendor" colspan="2">Canoni residui + restituzione. Se si vuole tenere il device: canoni residui + valore di mercato <span class="sub">Confermato per iscritto</span></td>
+    <td class="td-mac sep-vendor" colspan="2">Opzione A: aprire nuovo contratto per il nuovo device, lasciare il vecchio proseguire a scadenza — nessun costo immediato. Opzione B: chiusura anticipata con canoni residui, valore residuo del device riconosciuto in riduzione, costi riallocabili nel nuovo contratto <span class="sub">Confermato per iscritto</span></td>
+    <td class="td-na sep-apple">N/A</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Fine contratto</td>
+    <td class="td-mac" colspan="2">Restituzione · proroga 12 mesi · acquisto a valore residuo</td>
+    <td class="td-mac sep-vendor" colspan="2">Riscatto (1–2 canoni) · restituzione + nuovo contratto</td>
+    <td class="td-mac sep-vendor" colspan="2">Vendita a valore di mercato · restituzione · refresh · proroga (stesso canone 12m poi −50%)</td>
+    <td class="td-mac sep-vendor" colspan="2">Nessun riscatto — rivendita via EcoTwice · proroga · rinnovo</td>
+    <td class="td-na sep-apple">N/A</td>
+  </tr>
+
+  <tr>
+    <td class="td-label">Note aggiuntive</td>
+    <td class="td-mac">Fornitore Bocconi — condizioni applicate a TEF</td>
+    <td class="td-win"></td>
+    <td class="td-mac sep-vendor">—</td>
+    <td class="td-win">—</td>
+    <td class="td-mac sep-vendor">—</td>
+    <td class="td-win">—</td>
+    <td class="td-mac sep-vendor">Modalità "Capacity": perimetro definito upfront, device attivati progressivamente — canone parte solo dalla consegna del singolo device</td>
+    <td class="td-win"></td>
+    <td class="td-apple-biz sep-apple">Preventivo n. 2214470911<span class="sub">Valido fino al 06/06/2026</span><span class="sub">Contatto: Nima Karimpour Zahrai</span><span class="sub">piazzalibertybusiness@apple.com</span><span class="sub">+39 (02) 30302420</span><span class="sub">Nessuna opzione noleggio disponibile</span></td>
+  </tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="footer">
+  <strong>Note:</strong> Tutti gli importi IVA incl. al 22%. Rekordata: periodicità trimestrale. Fleet / CHG / Econocom: mensile. ThinkPad E14: spese accessorie non parametrizzate (istruttoria €50 + incasso €48 totali). CHG X1 Carbon (32 GB / 1 TB) non comparabile con spec richiesta. Riga 24m: solo CHG ha coefficiente esplicito; gli altri sono stime (totale 36m ÷ rate 24m).
+  <br><strong>Apple for Business:</strong> prezzo di acquisto diretto da preventivo ufficiale (n. 2214470911, Apple Business Team, 07/05/2026). Nessuna opzione di noleggio o leasing disponibile. AppleCare+ piano triennale prepagato: €219,00. Totale complessivo: €1.468,00. Furto non coperto da AppleCare+ standard. Danni accidentali illimitati con franchigia €99 (schermo/guscio) o €259 (altri danni).
+</div>
+
+</body>
+</html>
